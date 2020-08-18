@@ -29,6 +29,12 @@ res => {
     success: true
 }
 
+## get all ToDos
+method: GET,
+path: '/todolist'
+
+if fail: 401 Unauthorized
+
 ## create ToDO
 method: POST,
 path: 'todolist',
