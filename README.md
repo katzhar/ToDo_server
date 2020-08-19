@@ -37,7 +37,7 @@ if fail: 401 Unauthorized
 
 ## create ToDO
 method: POST,
-path: 'todolist',
+path: '/todolist',
 req => {
     title: string, 
     type: string, 
