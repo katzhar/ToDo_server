@@ -75,4 +75,4 @@ req => {
 
 ## logout
 method: GET
-path: '/login'
+path: '/logout'
