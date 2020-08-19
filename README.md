@@ -1,5 +1,5 @@
 ## Как подключиться к серверу?
-1) в package.json (client) необходимо прописать "proxy": "https://damp-fjord-03984.herokuapp.com" (при разворачивании локально был бы localhost)
+1) в package.json (client) необходимо прописать "proxy": "https://damp-fjord-03984.herokuapp.com"
 2) при успешной авторизации(/login) вам возвращается токен, по которому идентифицируется юзер, - токен необходимо сохранить в localstorage (client) и отправлять на сервер при каждом запросе (кроме регистрации и авторизации):
 { header = { Authorization : Bearer ${localStorage.getItem('token') || ''} };
 
@@ -7,7 +7,7 @@ if fail: 401 Unauthorized
  
 ## authorization
 method: POST,
-path: '/signup',
+path: '/login',
 req => {    
     username: string,
     password: string
@@ -19,7 +19,7 @@ res => {
 
 ## create new user
 method: POST,
-path: '/login',
+path: '/signup',
 req => {
     username: string,
     email: string,
