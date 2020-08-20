@@ -5,7 +5,7 @@ const router = express.Router();
 router.use(bodyParser.json());
 
 router.get('/', (req, res) => {
-    res.send('/index!!!');
+    res.send('/index');
 })
 
 module.exports = router;  

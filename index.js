@@ -5,7 +5,8 @@ const app = express();
 const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const http = require('http').createServer(app);
-const passport = require('passport')
+const passport = require('passport');
+const jwt = require('express-jwt');
 const PORT = process.env.PORT || 3002;
 
 app.use(router);
