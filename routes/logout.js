@@ -1,14 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const authenticate = require('../authenticate')
+const jwt = require('express-jwt');
+const authenticate = require('../authenticate');
 
 const router = express.Router();
 router.use(bodyParser.json());
 
-router.get('/', authenticate.verifyUser, function (req, res) {
-  req.session.destroy(function (err) {
-    res.redirect('/index');
-  });
+router.get('/', authenticate.verifyUser, (req, res) => {
+  // const token = req.headers.authorization.split(' ')[1];
+  res.statusCode = 200;
+  res.json({ success: true });
 });
 
-module.exports = router; 
+module.exports = router;
