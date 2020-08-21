@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const http = require('http').createServer(app);
 const passport = require('passport');
 const jwt = require('express-jwt');
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 
 app.use(router);
 app.use(express.json());
@@ -28,12 +28,14 @@ const signup = require('./routes/signup');
 const login = require('./routes/login');
 const logout = require('./routes/logout');
 const todolist = require('./routes/todolist');
+const types = require('./routes/types');
 
 app.use('/index', index);
 app.use('/signup', signup);
 app.use('/login', login);
 app.use('/logout', logout);
 app.use('/todolist', todolist);
+app.use('/types', types);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));

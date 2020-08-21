@@ -7,7 +7,8 @@ const usersSchema = new Schema({
     type: String,
     unique: true
   },
-  tasks: Array
+  tasks: Array,
+  types: Array,
 })
 
 usersSchema.plugin(passportLocalMongoose)

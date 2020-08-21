@@ -73,6 +73,49 @@ req => {
     ключ_значения: значение
 }
 
+## get all Types
+method: GET,
+path: '/types'
+
+res: "types": [ {
+            "id": string,
+            "name": string,
+            "colorId": string
+             },...]
+           
+colorId будет возвращаться с пустой строкой, если это поле не используете для создания типа
+
+if fail: 401 Unauthorized
+
+## create Type
+method: POST,
+path: '/types',
+req => {
+   name: string, 
+   colorId: string, 
+}
+res => {
+           "id": string,
+           "name": string,
+           "colorId": string
+       }
+colorId необязательное поле
+if fail: 401 Unauthorized
+ 
+## edit Type
+method: PUT,
+path: '/types/:id',
+где id - id Type
+req => {
+    ключ_измененного_значения: измененное_значение
+}
+(при необходимости, ключей может быть несколько)
+
+## delete Type
+method: DELETE,
+path: 'types/:id',
+где id - id Type
+
 ## logout
 method: GET
 path: '/logout'
