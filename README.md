@@ -35,7 +35,7 @@ path: '/todolist'
 
 if fail: 401 Unauthorized
 
-## create ToDO
+## create ToDo
 method: POST,
 path: '/todolist',
 req => {
@@ -56,7 +56,7 @@ res => tasks: {
 
 if fail: 401 Unauthorized
  
-## edit ToDO
+## edit ToDo
 method: PUT,
 path: '/todolist/:id',
 где id - id ToDO
@@ -65,7 +65,7 @@ req => {
 }
 (при необходимости, ключей может быть несколько)
 
-## delete ToDO
+## delete ToDo
 method: DELETE,
 path: 'todolist/:id',
 где id - id ToDO
