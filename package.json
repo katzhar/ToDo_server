@@ -20,6 +20,7 @@
     "http": "0.0.0",
     "jsonwebtoken": "^8.5.1",
     "memcached": "^2.2.2",
+    "memjs": "^1.2.2",
     "method-override": "^3.0.0",
     "module-exports": "^1.0.0",
     "mongoose": "^5.9.2",

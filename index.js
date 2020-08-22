@@ -6,36 +6,47 @@ const methodOverride = require('method-override');
 const mongoose = require('mongoose');
 const http = require('http').createServer(app);
 const passport = require('passport');
-const jwt = require('express-jwt');
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 app.use(router);
 app.use(express.json());
 
-const db = mongoose.connection;
 mongoose.set('useCreateIndex', true);
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 });
-db.on('error', (error) => console.error(error));
-db.once('open', () => console.log('Connected to DataBase'));
+mongoose.connection.on('error', (error) => console.error(error));
+mongoose.connection.once('open', () => console.log('Connected to DataBase'));
 
 app.use(passport.initialize());
 
-const index = require('./routes/index');
-const signup = require('./routes/signup');
-const login = require('./routes/login');
-const logout = require('./routes/logout');
-const todolist = require('./routes/todolist');
-const types = require('./routes/types');
+const routes = [{
+    path: '/index',
+    controller: require('./routes/index')
+},
+{
+    path: '/signup',
+    controller: require('./routes/signup')
+},
+{
+    path: '/login',
+    controller: require('./routes/login')
+},
+{
+    path: '/types',
+    controller: require('./routes/types')
+},
+{
+    path: '/todolist',
+    controller: require('./routes/todolist')
+},
+{
+    path: '/logout',
+    controller: require('./routes/logout')
+}];
 
-app.use('/index', index);
-app.use('/signup', signup);
-app.use('/login', login);
-app.use('/logout', logout);
-app.use('/todolist', todolist);
-app.use('/types', types);
+routes.map(item => app.use(item.path, item.controller));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));

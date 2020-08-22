@@ -15,7 +15,17 @@ router.post('/', [
         .withMessage('username should not be empty, minimum six characters, at least one letter and one number'),
     check('email')
         .isEmail()
-        .withMessage('invalid email address'),
+        .withMessage('invalid email address')
+        .custom((value, { req }) => {
+            return new Promise((resolve, reject) => {
+                Users.findOne({ email: req.body.email }, (err, user) => {
+                    if (err) throw err;
+                    if (user)
+                        reject(new Error('e-mail already in use'))
+                    resolve(true)
+                });
+            });
+        }),
     check('password')
         .matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/)
         .withMessage('password should not be empty, minimum six characters, at least one letter and one number')
