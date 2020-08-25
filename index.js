@@ -21,30 +21,27 @@ mongoose.connection.once('open', () => console.log('Connected to DataBase'));
 
 app.use(passport.initialize());
 
-const routes = [{
-    path: '/index',
-    controller: require('./routes/index')
-},
-{
-    path: '/signup',
-    controller: require('./routes/signup')
-},
-{
-    path: '/login',
-    controller: require('./routes/login')
-},
-{
-    path: '/types',
-    controller: require('./routes/types')
-},
-{
-    path: '/todolist',
-    controller: require('./routes/todolist')
-},
-{
-    path: '/logout',
-    controller: require('./routes/logout')
-}];
+const routes = [
+    {
+        path: '/signup',
+        controller: require('./routes/signup')
+    },
+    {
+        path: '/login',
+        controller: require('./routes/login')
+    },
+    {
+        path: '/types',
+        controller: require('./routes/types')
+    },
+    {
+        path: '/todolist',
+        controller: require('./routes/todolist')
+    },
+    {
+        path: '/logout',
+        controller: require('./routes/logout')
+    }];
 
 routes.map(item => app.use(item.path, item.controller));
 
