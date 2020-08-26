@@ -107,9 +107,8 @@ method: PUT,
 path: '/types/:id',
 где id - id Type
 req => {
-    ключ_измененного_значения: измененное_значение
+   name: string
 }
-(при необходимости, ключей может быть несколько)
 
 ## delete Type
 method: DELETE,
