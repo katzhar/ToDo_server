@@ -21,14 +21,14 @@ router.post('/', [
                 Users.findOne({ email: req.body.email }, (err, user) => {
                     if (err) throw err;
                     if (user)
-                        reject(new Error('e-mail already in use'))
+                        reject(new Error('e-mail is already in use'))
                     resolve(true)
                 });
             });
         }),
     check('password')
-        .matches(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/)
-        .withMessage('password should not be empty, minimum six characters, at least one letter and one number')
+        .matches(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/)
+        .withMessage('password should not be empty, minimum six characters, at least one letter, one numberand one specail character')
 ], (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty())
